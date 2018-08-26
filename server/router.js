@@ -1,23 +1,27 @@
 // Imports: Router
-const ROUTER = require('express').Router();
+const router = require('express').Router();
 
 // Database: Controller
-const DATABASECONTROLLER = require('./controllers/database-controller.js');
+const databaseController = require('./controllers/database-controller.js');
 
 
 // Routes (CRUD)
 // Create Todo
-ROUTER.post('/', DATABASECONTROLLER.createTodo);
+router.post('/', databaseController.createTodo);
+
 
 // Read Todo
-ROUTER.get('/', DATABASECONTROLLER.findTodo);
+router.get('/', databaseController.findTodoByID);
+
 
 // Update Todo
-ROUTER.put('/', DATABASECONTROLLER.updateTodo);
+router.put('/', databaseController.updateTodoByID);
+
 
 // Delete Todo
-ROUTER.delete('/', DATABASECONTROLLER.deleteTodo);
+router.delete('/', databaseController.deleteTodoByID);
+
 
 
 // Exports
-module.exports = ROUTER;
+module.exports = router;

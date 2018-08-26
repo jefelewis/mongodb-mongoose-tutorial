@@ -1,19 +1,19 @@
 // Imports: Dependencies
-const EXPRESS = require('express');
-const APP = EXPRESS();
-const MONGOOSE = require('mongoose');
+const express = require('express');
+const app = express();
+const mongoose = require('mongoose');
 
 // Imports: Router
-const ROUTER = require('./router.js');
-app.use(ROUTER);
+const router = require('./router.js');
+app.use(router);
 
 
 // Database: URI
-const MONGOURI = 'mongodb://localhost/DatabaseExample';
+const mongoURI = 'mongodb://localhost/DatabaseExample';
 
 // Database: Connection
-MONGOOSE.connect(
-  MONGOURI,
+mongoose.connect(
+  mongoURI,
   { useNewUrlParser: true },
   // Error Handling
   function(err) {
@@ -26,19 +26,19 @@ MONGOOSE.connect(
 });
 
 // Database: Connection Test
-const DB = mongoose.connection;
-DB.on('error', console.error.bind(console, 'connection error:'));
-DB.once('open', function() {
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
   console.log('Connected to the Database.');
 });
 
 
 // Express: Port
-const PORT = 4000 || process.env;
+const port = 4000 || process.env;
 
 // Express: Listener
-APP.listen(PORT, function() {
-  console.log('The server has started on port: ' + PORT);
+app.listen(port, function() {
+  console.log('The server has started on port: ' + port);
 });
 
 
