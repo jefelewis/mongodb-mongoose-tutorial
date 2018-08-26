@@ -3,6 +3,13 @@ const EXPRESS = require('express');
 const APP = EXPRESS();
 const MONGOOSE = require('mongoose');
 
+// Imports: Router
+const ROUTER = require('./router.js');
+app.use(ROUTER);
+
+
+// Database: URI
+const MONGOURI = 'mongodb://localhost/DatabaseExample';
 
 // Database: Connection
 MONGOOSE.connect(
@@ -22,7 +29,7 @@ MONGOOSE.connect(
 const DB = mongoose.connection;
 DB.on('error', console.error.bind(console, 'connection error:'));
 DB.once('open', function() {
-  console.log("Connected to the Database.");
+  console.log('Connected to the Database.');
 });
 
 
